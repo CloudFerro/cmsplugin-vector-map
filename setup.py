@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="cmsplugin-vector-map",
     version='1.0.0',
-    url='https://gitlab.mtechnology.pl/packages/django/cmsplugin-vector-map',
+    url='https://github.com/CloudFerro/cmsplugin-vector-map',
     packages=find_packages(where='src'),
     include_package_data=True,
     package_dir={'': 'src'},
