@@ -1,0 +1,57 @@
+ /* Popup container */
+ .jqvmap-pin {
+    position: fixed;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* The actual popup (appears on top) */
+  .jqvmap-pin .mappopuptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #555;
+    opacity: 0.85;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    margin-bottom: 25px;
+  }
+  .jqvmap-pin .mappopuptext *{
+    padding: 5px;
+    color: #fff;
+  }
+  
+  /* Popup arrow */
+  .jqvmap-pin .mappopuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 20%;
+    margin-left: -5px;
+    border-width: 20px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class when clicking on the popup container (hide and show the popup) */
+  .jqvmap-pin .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 0.85;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:0.85 ;}
+  } 

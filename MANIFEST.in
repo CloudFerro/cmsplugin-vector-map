@@ -1,0 +1,6 @@
+include README.md
+include requirements.txt
+recursive-include src/cmsplugin_vector_map/static *
+recursive-include src/cmsplugin_vector_map/templates *
+recursive-include src/cmsplugin_vector_map/locale *
+recursive-include src/cmsplugin_vector_map/migrations *

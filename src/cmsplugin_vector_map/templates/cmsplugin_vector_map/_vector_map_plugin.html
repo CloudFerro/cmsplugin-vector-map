@@ -1,0 +1,85 @@
+{% load cms_tags sekizai_tags static l10n %}
+<div id="vmap-{{ instance.id }}" style="width: {{ instance.vector_map.width }}{{ instance.vector_map.width_units }}; height: {{ instance.vector_map.height }}{{ instance.vector_map.height_units }};"></div>
+
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{% static 'cmsplugin_vector_map/css/jqvmap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'cmsplugin_vector_map/css/jqvmap.pin.css' %}">
+{% endaddtoblock %}
+
+{% addtoblock "js"  %}
+<script type="text/javascript" src="{% static 'cmsplugin_vector_map/js/jquery.vmap.min.js' %}" charset="utf-8"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js"  %}
+<script type="text/javascript" src="{% get_static_prefix %}cmsplugin_vector_map/js/maps/
+{% if instance.vector_map.map_type == 'europe_simple_en' %}continents/jquery.vmap.europe.js
+{% elif instance.vector_map.map_type == 'europe_en' %}jquery.vmap.europe.js
+{% elif instance.vector_map.map_type == 'world_en' %}jquery.vmap.world.js
+{% elif instance.vector_map.map_type == 'africa_en' %}continents/jquery.vmap.africa.js
+{% elif instance.vector_map.map_type == 'asia_en' %}continents/jquery.vmap.asia.js
+{% elif instance.vector_map.map_type == 'australia_en' %}continents/jquery.vmap.australia.js
+{% elif instance.vector_map.map_type == 'north-america_en' %}continents/jquery.vmap.north-america.js
+{% elif instance.vector_map.map_type == 'south-america_en' %}continents/jquery.vmap.south-america.js
+{% endif %}" 
+charset="utf-8"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js"  %}
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(() => {
+        $('#vmap-{{ instance.id }}').vectorMap({ 
+            map: '{{ instance.vector_map.map_type }}',
+            {% if instance.vector_map.background_color %}backgroundColor: '{{ instance.vector_map.background_color }}',{% endif %}
+            {% if instance.vector_map.border_color %}borderColor: '{{ instance.vector_map.border_color }}',{% endif %}
+            {% if instance.vector_map.map_color %}color: '{{ instance.vector_map.map_color }}',{% endif %}
+            {% if instance.vector_map.hover_color %}hoverColor: '{{ instance.vector_map.hover_color }}',{% endif %}
+            {% if instance.vector_map.selected_color %}selectedColor: '{{ instance.vector_map.selected_color }}',{% endif %}
+            borderOpacity: {{ instance.vector_map.border_opacity|unlocalize }},
+            borderWidth: {{ instance.vector_map.border_width }},
+            enableZoom: {% if instance.vector_map.enable_zoom %}true{% else %}false{% endif %},
+            hoverOpacity: {{ instance.vector_map.hover_opacity|unlocalize }},
+            multiSelectRegions: {% if instance.vector_map.multi_select_regions %}true{% else %}false{% endif %},
+            showLabels: {% if instance.vector_map.show_labels %}true{% else %}false{% endif %},
+            showTooltip: {% if instance.vector_map.show_tooltip %}true{% else %}false{% endif %},
+
+            {% if instance.vector_map.pin_set.count > 0 %}
+            selectedRegions: [
+                {% for pin in instance.vector_map.pin_set.all %}
+                    {% if pin.preselect %}
+                        '{{ pin.country_code|lower }}'{% if not forloop.last %},{% endif %}
+                    {% endif %}
+                {% endfor %}
+            ],
+            pins: {
+                {% for pin in instance.vector_map.pin_set.all %}
+                    "{{ pin.country_code|lower }}" : "<span class='mappopuptext' id='mapPopup_{{ pin.country_code|lower }}{{ instance.id }}'>{{ pin.text|linebreaks }}</span>",
+                {% endfor %}
+            },
+            {% endif %}
+            onRegionClick: function(event, code, region)
+            {
+                event.preventDefault();
+                mapPopupFunc(code);
+            },
+        });
+        {% if not instance.vector_map.enable_drag %}
+            $('#vmap-{{ instance.id }}').off('drag');
+            $('#vmap-{{ instance.id }}').off('mousemove');
+        {% endif %}
+
+        {% with ''|center:instance.vector_map.initial_zoom as range %}
+        {% for _ in range %}
+            $('#vmap-{{ instance.id }}').vectorMap('zoomIn');
+        {% endfor %}
+        {% endwith %}
+
+        function mapPopupFunc(country) {
+            $(".mappopuptext").each(function( index ) {
+                $(this).removeClass("show");
+            });
+            var popup = document.getElementById("mapPopup_" + country + "{{ instance.id }}");
+            popup.classList.toggle("show");
+        }
+    });
+</script>
+{% endaddtoblock %}

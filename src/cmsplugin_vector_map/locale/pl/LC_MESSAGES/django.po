@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-20 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: cms_plugins.py:9 models.py:52 models.py:56
+msgid "Vector map"
+msgstr "Mapa wektorowa"
+
+#: models.py:11
+msgid "Vector map name"
+msgstr "Nazwa mapy wektorowej"
+
+#: models.py:13
+msgid "World"
+msgstr "Świat"
+
+#: models.py:14
+msgid "Europe"
+msgstr "Europa"
+
+#: models.py:15
+msgid "Europe (simple)"
+msgstr "Europa (prosta)"
+
+#: models.py:16
+msgid "Africa"
+msgstr "Afryka"
+
+#: models.py:17
+msgid "Asia"
+msgstr "Azja"
+
+#: models.py:18
+msgid "Australia"
+msgstr "Australia"
+
+#: models.py:19
+msgid "North America"
+msgstr "Ameryka północna"
+
+#: models.py:20
+msgid "South America"
+msgstr "Ameryka południowa"
+
+#: models.py:23
+msgid "pixels (px)"
+msgstr "piksele (px)"
+
+#: models.py:24
+msgid "percent (%)"
+msgstr "procenty (%)"
+
+#: models.py:25
+msgid "relative to font size (em)"
+msgstr "relatywne do rozmiaru czcionki (em)"
+
+#: models.py:27
+msgid "map type"
+msgstr "typ mapy"
+
+#: models.py:28
+msgid "width"
+msgstr "szerokość"
+
+#: models.py:29
+msgid "width units"
+msgstr "jednostki szerokości"
+
+#: models.py:30
+msgid "height"
+msgstr "wysokość"
+
+#: models.py:31
+msgid "height units"
+msgstr "jednostki wysokości"
+
+#: models.py:33
+msgid "background color"
+msgstr "kolor tła"
+
+#: models.py:33 models.py:34 models.py:37 models.py:41 models.py:43
+msgid "Any CSS compatible format"
+msgstr "Format kompatybilny z CSS"
+
+#: models.py:34
+msgid "border color"
+msgstr "kolor obramowania"
+
+#: models.py:35
+msgid "border opacity"
+msgstr "przezroczystość obramowania"
+
+#: models.py:35 models.py:42
+msgid "In range from 0 to 1"
+msgstr "W zakresie od 0 do 1"
+
+#: models.py:36
+msgid "border width"
+msgstr "grubość obramowania"
+
+#: models.py:37
+msgid "color of map regions"
+msgstr "kolor mapy"
+
+#: models.py:38
+msgid "enable zoom"
+msgstr "aktywuj przybliżanie"
+
+#: models.py:39
+msgid "enable drag"
+msgstr "aktywuj przesuwanie"
+
+#: models.py:40
+msgid "initial zoom"
+msgstr "początkowe przybliżenie"
+
+#: models.py:41
+msgid "hover color"
+msgstr "kolor po najechaniu"
+
+#: models.py:42
+msgid "hover opacity"
+msgstr "przezroczystość po najechaniu"
+
+#: models.py:43
+msgid "selected color"
+msgstr "kolor po wybraniu"
+
+#: models.py:44
+msgid "allow to multi select regions"
+msgstr "pozwól na multi wybór regionów"
+
+#: models.py:45
+msgid "Show ISO code labels"
+msgstr "Pokaż kody ISO"
+
+#: models.py:46
+msgid "Show tooltip on mouseover"
+msgstr "Pokaż tooltip po najechaniu myszą"
+
+#: models.py:53
+msgid "Vector maps"
+msgstr "Mapy wektorowe"
+
+#: models.py:57
+msgid "country code"
+msgstr "kod państwa"
+
+#: models.py:57
+msgid "Code of the country where the pin will appear"
+msgstr "Kod państwa nad którym pojawi się przypięta zawartość"
+
+#: models.py:58
+msgid "preselect region"
+msgstr "region ma być wybrany"
+
+#: models.py:59
+msgid "Pin text content"
+msgstr "Zawartość przypiętej zawartości"
+
+#: models.py:62
+msgid "Vector map pin"
+msgstr "Przypięta zawartość"
+
+#: models.py:63
+msgid "Vector map pins"
+msgstr "Przypięte zawartości"
+
+#: models.py:67
+msgid "Choose a vector map"
+msgstr "Wybierz mapę wektorową"
+
+#: models.py:70
+msgid "Vector map add-on"
+msgstr "Dodatek mapy wektorowej"
