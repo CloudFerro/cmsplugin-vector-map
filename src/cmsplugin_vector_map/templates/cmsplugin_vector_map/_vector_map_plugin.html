@@ -59,7 +59,7 @@ charset="utf-8"></script>
             onRegionClick: function(event, code, region)
             {
                 event.preventDefault();
-                mapPopupFunc(code);
+                mapPopupFunc{{ instance.id }}(code);
             },
         });
         {% if not instance.vector_map.enable_drag %}
@@ -73,12 +73,17 @@ charset="utf-8"></script>
         {% endfor %}
         {% endwith %}
 
-        function mapPopupFunc(country) {
+        function mapPopupFunc{{ instance.id }}(country) {
             $(".mappopuptext").each(function( index ) {
                 $(this).removeClass("show");
             });
-            var popup = document.getElementById("mapPopup_" + country + "{{ instance.id }}");
-            popup.classList.toggle("show");
+            var popup = $("#mapPopup_" + country + "{{ instance.id }}");
+            popup.parent().appendTo("body");
+            var offset = $("#vmap-{{ instance.id }}").find("[id ^=jqvmap][id $=_"+country+"]").get(0).getBoundingClientRect();
+            popup.parent().css("left", offset.left + $(document).scrollLeft() + offset.width/2);
+            popup.parent().css("top", offset.top + $(document).scrollTop() + offset.height/2);
+
+            popup.get(0).classList.toggle("show");
         }
     });
 </script>

@@ -1,6 +1,6 @@
  /* Popup container */
  .jqvmap-pin {
-    position: fixed;
+    position: absolute;
     display: inline-block;
     cursor: pointer;
   }
