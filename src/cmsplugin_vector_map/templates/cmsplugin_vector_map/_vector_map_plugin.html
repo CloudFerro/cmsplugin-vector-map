@@ -1,9 +1,11 @@
 {% load cms_tags sekizai_tags static l10n %}
-<div id="vmap-{{ instance.id }}" style="width: {{ instance.vector_map.width }}{{ instance.vector_map.width_units }}; height: {{ instance.vector_map.height }}{{ instance.vector_map.height_units }};"></div>
-
+<div class= "vmap-wrapper">
+    <div id="vmap-{{ instance.id }}" class="jqvmap" style="width: {{ instance.vector_map.width }}{{ instance.vector_map.width_units }}; height: {{ instance.vector_map.height }}{{ instance.vector_map.height_units }};"></div>
+</div>
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{% static 'cmsplugin_vector_map/css/jqvmap.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'cmsplugin_vector_map/css/jqvmap.pin.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'cmsplugin_vector_map/css/jqvmap.responsive.css' %}">
 {% endaddtoblock %}
 
 {% addtoblock "js"  %}
