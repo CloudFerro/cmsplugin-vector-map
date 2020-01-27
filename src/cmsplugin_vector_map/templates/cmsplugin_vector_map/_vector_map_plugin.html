@@ -12,21 +12,11 @@
 {% endaddtoblock %}
 
 {% addtoblock "js"  %}
-<script type="text/javascript" src="{% get_static_prefix %}cmsplugin_vector_map/js/maps/
-{% if instance.vector_map.map_type == 'europe_simple_en' %}continents/jquery.vmap.europe.js
-{% elif instance.vector_map.map_type == 'europe_en' %}jquery.vmap.europe.js
-{% elif instance.vector_map.map_type == 'world_en' %}jquery.vmap.world.js
-{% elif instance.vector_map.map_type == 'africa_en' %}continents/jquery.vmap.africa.js
-{% elif instance.vector_map.map_type == 'asia_en' %}continents/jquery.vmap.asia.js
-{% elif instance.vector_map.map_type == 'australia_en' %}continents/jquery.vmap.australia.js
-{% elif instance.vector_map.map_type == 'north-america_en' %}continents/jquery.vmap.north-america.js
-{% elif instance.vector_map.map_type == 'south-america_en' %}continents/jquery.vmap.south-america.js
-{% endif %}" 
-charset="utf-8"></script>
+<script type="text/javascript" src="{% get_static_prefix %}cmsplugin_vector_map/js/maps/{% if instance.vector_map.map_type == 'europe_simple_en' %}continents/jquery.vmap.europe.js{% elif instance.vector_map.map_type == 'europe_en' %}jquery.vmap.europe.js{% elif instance.vector_map.map_type == 'world_en' %}jquery.vmap.world.js{% elif instance.vector_map.map_type == 'africa_en' %}continents/jquery.vmap.africa.js{% elif instance.vector_map.map_type == 'asia_en' %}continents/jquery.vmap.asia.js{% elif instance.vector_map.map_type == 'australia_en' %}continents/jquery.vmap.australia.js{% elif instance.vector_map.map_type == 'north-america_en' %}continents/jquery.vmap.north-america.js{% elif instance.vector_map.map_type == 'south-america_en' %}continents/jquery.vmap.south-america.js{% endif %}" charset="utf-8"></script>
 {% endaddtoblock %}
 
 {% addtoblock "js"  %}
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
     $(document).ready(() => {
         $('#vmap-{{ instance.id }}').vectorMap({ 
             map: '{{ instance.vector_map.map_type }}',
@@ -63,6 +53,10 @@ charset="utf-8"></script>
                 mapPopupFunc{{ instance.id }}(code);
             },
         });
+        $(".mappopuptext").each(function( index ) {
+            $(this).parent().appendTo("body");
+        });
+
         {% if not instance.vector_map.enable_drag %}
             $('#vmap-{{ instance.id }}').off('drag');
             $('#vmap-{{ instance.id }}').off('mousemove');
@@ -79,7 +73,6 @@ charset="utf-8"></script>
                 $(this).removeClass("show");
             });
             var popup = $("#mapPopup_" + country + "{{ instance.id }}");
-            popup.parent().appendTo("body");
             var offset = $("#vmap-{{ instance.id }}").find("[id ^=jqvmap][id $=_"+country+"]").get(0).getBoundingClientRect();
             popup.parent().css("left", offset.left + $(document).scrollLeft() + offset.width/2);
             popup.parent().css("top", offset.top + $(document).scrollTop() + offset.height/2);
