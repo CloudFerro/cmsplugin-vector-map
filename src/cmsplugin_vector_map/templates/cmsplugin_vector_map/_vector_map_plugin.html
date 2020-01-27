@@ -43,7 +43,7 @@
             ],
             pins: {
                 {% for pin in instance.vector_map.pin_set.all %}
-                    "{{ pin.country_code|lower }}" : "<span class='mappopuptext' id='mapPopup_{{ pin.country_code|lower }}{{ instance.id }}'>{{ pin.text|linebreaks }}</span>",
+                    "{{ pin.country_code|lower }}" : "<div class='mappopuptext' id='mapPopup_{{ pin.country_code|lower }}{{ instance.id }}'>{{ pin.text|linebreaks }}</div>",
                 {% endfor %}
             },
             {% endif %}
