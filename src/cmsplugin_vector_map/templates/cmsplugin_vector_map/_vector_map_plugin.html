@@ -55,6 +55,7 @@
         });
         $(".mappopuptext").each(function( index ) {
             $(this).parent().appendTo("body");
+            $(this).parent().removeAttr("for");
         });
 
         {% if not instance.vector_map.enable_drag %}

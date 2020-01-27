@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="cmsplugin-vector-map",
-    version='1.0.4',
+    version='1.0.5',
     url='https://gitlab.mtechnology.pl/packages/django/cmsplugin-vector-map',
     packages=find_packages(where='src'),
     include_package_data=True,
